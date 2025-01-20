@@ -6,12 +6,6 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "static",
-  site: "danialSamadi.github.io",
+  site: "danialsamadi.github.io",
   integrations: [mdx(), sitemap(), tailwind()],
-  markdown: {
-    shikiConfig: {
-      theme: "github-dark-high-contrast",
-    },
-  },
 });
