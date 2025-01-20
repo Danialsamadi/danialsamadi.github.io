@@ -14,6 +14,9 @@ This portfolio showcases my projects, skills, and experiences. Feel free to expl
 - **GitHub Pages**: For hosting the portfolio.
 - **HTML/CSS/JavaScript**: For the core structure and interactivity.
 
+## Theme Credit
+The theme for this portfolio is based on a design by [ArnavK-09](https://github.com/ArnavK-09). Special thanks to them for their amazing work!
+
 ## How to Explore
 Visit [danialsamadi.github.io](https://danialsamadi.github.io) to see the live site.
 
