@@ -1,10 +1,6 @@
 ---
-import { getCollection } from "astro:content";
-import Hero from "@/components/Hero.astro";
-import Breadcrumb from "@/components/Breadcrumb.astro";
-import Section from "@/components/Section.astro";
 import Layout from "@/layouts/Layout.astro";
-import { KNOWN_TECH, ABOUT_ME } from "@/consts";
+import Section from "@/components/Section.astro";
 
 interface Project {
   title: string;
@@ -13,14 +9,14 @@ interface Project {
   link: string;
 }
 
+// You can add your projects data here
 const projects: Project[] = [
 {
     title: "Wi-Fi Scanner",
     description: "A Python tool to scan nearby Wi-Fi networks, extract SSIDs, and measure signal strength (dBm) using netsh on Windows.",
     tech: ["Python", "netsh"],
     link: "https://github.com/Danialsamadi/rssi",
-  },
-  {
+  },{
     title: "Free-macos",
     description: "A macOS memory monitoring tool with real-time updates, visual progress bars, and customizable refresh intervals. Supports formatted output in B, KB, MB, or GB.",
     tech: ["Python", "Rich", "Click", "Poetry", "macOS"],
@@ -35,13 +31,9 @@ const projects: Project[] = [
 ];
 ---
 
-<Layout title="Danial Samadi Portfolio">
-  <Hero />
-  <Section
-    title="My Projects"
-    className={"bg-gradient-to-b from-black/70 from-[5%] to-black via-black"}
-  >
-    <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+<Layout title="My Projects">
+  <Section title="Projects">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
       {
         projects.map((project) => (
           <div class="border-2 border-white p-6 rounded-lg hover:bg-white/5 transition-all">
@@ -81,22 +73,4 @@ const projects: Project[] = [
       }
     </div>
   </Section>
-  <Section title="Technologies I Know" full_screen={false}>
-    <div class="w-full grid place-items-center">
-      <div
-        class="w-full gap-4 flex flex-wrap px-3 max-w-xl text-lg justify-center"
-      >
-        {KNOWN_TECH.map((x) => <Breadcrumb title={x} />)}
-      </div>
-    </div>
-  </Section>
-  <Section title="About Me">
-    <div class="w-full grid place-items-center">
-      <div
-        class="max-w-4xl text-xl md:text-lg opacity-90 text-center justify-evenly"
-      >
-        <p>{ABOUT_ME}</p>
-      </div>
-    </div>
-  </Section>
-</Layout>
+</Layout> 
