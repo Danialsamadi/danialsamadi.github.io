@@ -10,11 +10,27 @@ import { QUOTE, SITE_TITLE } from "@/consts";
   id="hero"
 >
   <div class="grid place-items-center">
-    <div class="text-center -mt-10">
-      <h1 class="font-bold text-7xl">{`<${SITE_TITLE} />`}</h1>
-      <h2 class="text-2xl opacity-95">
+    <div class="text-center -mt-10 space-y-4">
+      <h1 class="font-bold text-6xl md:text-7xl animate-fade-in">{`<${SITE_TITLE} />`}</h1>
+      <h2 class="text-xl md:text-2xl opacity-95 font-medium">
         {QUOTE}
       </h2>
+      <div class="flex items-center justify-center gap-4 pt-4 flex-wrap">
+        <a
+          href="#featuredprojects"
+          class="px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all hover:scale-105 shadow-lg"
+        >
+          View Projects
+        </a>
+        <a
+          href="https://github.com/Danialsamadi"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-6 py-3 border-2 border-white font-semibold rounded-lg hover:bg-white/10 transition-all hover:scale-105"
+        >
+          GitHub Profile
+        </a>
+      </div>
     </div>
   </div>
   <div>

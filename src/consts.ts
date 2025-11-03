@@ -1,16 +1,16 @@
 export const SITE_TITLE = "Danial Samadi";
 export const SITE_DESCRIPTION =
-  `My Portfolio Website`
+  `Full-Stack Developer | Performance Optimization Specialist | Open Source Contributor`
 export const KNOWN_TECH =
-  `Python,Java,JavaScript,React,Vite.js,Linux,Mac,Unix,AWS,Docker,SQL,SQLite,PostgreSQL,BeautifulSoup,Scapy,Requests,Django,REST APIs,Git,GitHub`.split(
+  `Go,Python,TypeScript,JavaScript,React,Node.js,Astro,Java,PHP,Linux,macOS,Docker,PostgreSQL,MySQL,Supabase,Git,GitHub,REST APIs,CI/CD,Tailwind CSS,Three.js,Django,PWA`.split(
     ",",
   );
 export const ABOUT_ME =
-  `My name is Danial Samadi, and I am a motivated Computer Programming student at Algonquin College with a strong interest in technology and programming. I have a keen interest in understanding how operating systems work, particularly Linux, which I am a big fan of due to its open-source nature.
+  `Full-stack developer and Computer Programming student at Algonquin College with a passion for building high-performance, user-centric applications. I specialize in creating scalable solutions that solve real-world problems—from processing 20,000+ configurations in 11 seconds with Go to building offline-first PWAs with cloud sync capabilities.
 
-In my free time, I enjoy creating Python scripts for automation and exploring new frameworks like Django. Learning about Linux and contributing to open-source projects are among my favorite activities.`
+My approach combines systems-level thinking with modern web development, whether I'm optimizing memory management, building production-ready APIs, or crafting intuitive user experiences. I believe in writing clean, efficient code and contributing to the open-source community.`
 export const GITHUB_USERNAME = "Danialsamadi";
-export const QUOTE = "Programmer, Editor and Student";
+export const QUOTE = "Full-Stack Developer | Systems Programmer | Problem Solver";
 export const NAV_LINKS: Array<{ title: string; href?: string }> = [
   {
     title: "Github",
