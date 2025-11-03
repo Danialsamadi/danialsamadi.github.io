@@ -1,6 +1,6 @@
 # Welcome to My New Portfolio!
 
-🚀 **Check out my new portfolio at [danialsamadi.github.io](https://danialsamadi.github.io)!**
+🚀 **Check out my new portfolio at [Danisdev.me](https://denisdev.me)!**
 
 This portfolio showcases my projects, skills, and experiences. Feel free to explore and get in touch!
 
@@ -18,7 +18,7 @@ This portfolio showcases my projects, skills, and experiences. Feel free to expl
 The theme for this portfolio is based on a design by [ArnavK-09](https://github.com/ArnavK-09). Special thanks to them for their amazing work!
 
 ## How to Explore
-Visit [danialsamadi.github.io](https://danialsamadi.github.io) to see the live site.
+Visit [Danisdev.me](https://denisdev.me) to see the live site.
 
 ---
 
