@@ -103,6 +103,9 @@ const contactMethods: ContactMethod[] = [
             ></textarea>
           </div>
           
+          <!-- hCaptcha -->
+          <div class="h-captcha" data-captcha="true"></div>
+          
           <button
             type="submit"
             class="w-full px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all hover:scale-[1.02] shadow-lg"
@@ -152,4 +155,24 @@ const contactMethods: ContactMethod[] = [
       </div>
     </div>
   </Section>
-</Layout> 
+</Layout>
+
+<script is:inline src="https://web3forms.com/client/script.js" async defer></script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[action="https://api.web3forms.com/submit"]');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]');
+        
+        if (!hCaptcha || !hCaptcha.value) {
+          e.preventDefault();
+          alert("Please complete the captcha verification");
+          return false;
+        }
+      });
+    }
+  });
+</script> 
