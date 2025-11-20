@@ -32,6 +32,19 @@ const contactMethods: ContactMethod[] = [
 <Layout title="Contact Me">
   <Section title="Contact">
     <div class="max-w-3xl mx-auto space-y-12">
+      <!-- Success Message -->
+      <div id="success-message" class="hidden border-2 border-green-500 bg-green-500/10 p-6 rounded-lg">
+        <div class="flex items-center gap-3">
+          <svg class="w-6 h-6 text-green-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <h3 class="text-xl font-bold text-green-400 mb-1">Message Sent Successfully!</h3>
+            <p class="text-white/80">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Contact Form -->
       <div class="border-2 border-white p-8 rounded-lg">
         <h2 class="text-3xl font-bold mb-6 text-center">Send me a message</h2>
@@ -103,34 +116,6 @@ const contactMethods: ContactMethod[] = [
             ></textarea>
           </div>
           
-          <!-- hCaptcha -->
-          <div class="flex justify-center items-center py-4">
-            <div 
-              class="h-captcha" 
-              data-captcha="true" 
-              data-size="normal"
-              style="transform: scale(1); max-width: 100%;"
-            ></div>
-          </div>
-          
-          <style>
-            @media (max-width: 768px) {
-              .h-captcha {
-                transform: scale(0.85) !important;
-              }
-            }
-            @media (min-width: 769px) and (max-width: 1024px) {
-              .h-captcha {
-                transform: scale(0.95) !important;
-              }
-            }
-            @media (min-width: 1025px) {
-              .h-captcha {
-                transform: scale(1) !important;
-              }
-            }
-          </style>
-          
           <button
             type="submit"
             class="w-full px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-white/90 transition-all hover:scale-[1.02] shadow-lg"
@@ -180,24 +165,19 @@ const contactMethods: ContactMethod[] = [
       </div>
     </div>
   </Section>
-</Layout>
-
-<script is:inline src="https://web3forms.com/client/script.js" async defer></script>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form[action="https://api.web3forms.com/submit"]');
-    
-    if (form) {
-      form.addEventListener('submit', function(e) {
-        const hCaptcha = form.querySelector('textarea[name="h-captcha-response"]');
-        
-        if (!hCaptcha || !hCaptcha.value) {
-          e.preventDefault();
-          alert("Please complete the captcha verification");
-          return false;
-        }
-      });
+  
+  <script>
+    // Check for success parameter in URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      const successMessage = document.getElementById('success-message');
+      if (successMessage) {
+        successMessage.classList.remove('hidden');
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Remove success parameter from URL without reload
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
     }
-  });
-</script> 
+  </script>
+</Layout> 
