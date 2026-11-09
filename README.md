@@ -1,6 +1,6 @@
 # Danial Samadi - Developer Portfolio
 
-🚀 **Live Site**: [danialsamadi.github.io](https://danialsamadi.github.io) | [Danisdev.me](https://danisdev.me)
+🚀 **Live Site**: [danialsamadi.github.io](https://danialsamadi.github.io) | [0xdanis.com](https://0xdanis.com)
 
 A modern, performance-focused developer portfolio showcasing full-stack projects, systems programming expertise, and open-source contributions. Built with Astro for blazingly fast load times.
 
@@ -67,7 +67,7 @@ Theme based on design by [ArnavK-09](https://github.com/ArnavK-09). Customized f
 ## 📧 Connect
 
 - **GitHub**: [@Danialsamadi](https://github.com/Danialsamadi)
-- **Website**: [danisdev.me](https://danisdev.me)
+- **Website**: [0xdanis.com](https://0xdanis.com)
 - **Location**: Ottawa, ON - Algonquin College
 
 ---

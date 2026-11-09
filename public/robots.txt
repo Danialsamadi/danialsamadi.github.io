@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://danisdev.me/sitemap-index.xml
+Sitemap: https://0xdanis.com/sitemap-index.xml

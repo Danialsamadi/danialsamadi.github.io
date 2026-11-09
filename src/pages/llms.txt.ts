@@ -30,10 +30,10 @@ ${ABOUT_ME}
 
 ## Pages
 
-- [Home](https://danisdev.me/): Overview, featured projects, skills, and bio
-- [Projects](https://danisdev.me/projects): Complete registry of projects, pulled live from the GitHub API at build time
-- [Contact](https://danisdev.me/contact): Contact form and direct channels
-- [Resume](https://danisdev.me/Resume.pdf): Resume in PDF form
+- [Home](https://0xdanis.com/): Overview, featured projects, skills, and bio
+- [Projects](https://0xdanis.com/projects): Complete registry of projects, pulled live from the GitHub API at build time
+- [Contact](https://0xdanis.com/contact): Contact form and direct channels
+- [Resume](https://0xdanis.com/Resume.pdf): Resume in PDF form
 
 ## Projects
 
@@ -52,7 +52,7 @@ ${KNOWN_TECH.join(", ")}
 ## Optional
 
 - [GitHub profile README](https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}): Profile configuration and stats
-- [Sitemap](https://danisdev.me/sitemap-index.xml)
+- [Sitemap](https://0xdanis.com/sitemap-index.xml)
 `;
 
   return new Response(body, {
