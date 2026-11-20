@@ -5,11 +5,13 @@ readingTime: "3 min"
 draft: true
 ---
 
-Benchmarks feel objective. Until you check the answer key.
+Benchmarks feel objective until you check the answer key.
 
-LoCoMo is a popular test for long-term memory. About 6.4% of its answer key is wrong. And its judge is lenient.
+LoCoMo is a popular test for long-term memory. About 6.4% of its answer key is wrong, and its judge is lenient.
 
 So you can score well by being wrong in the right way. Wild.
+
+Grading against a broken key is just grading yourself.
 
 ## what i use instead
 
@@ -20,4 +22,4 @@ My harness downloads the dataset, ingests it, scores with an LLM judge and dumps
 
 Starting small: the LongMemEval-S oracle set, 50 questions. Then scale up.
 
-And for Synapse I care about more than accuracy: Speed and cost are the whole pitch, so those get measured too.
+For Synapse I care about more than accuracy. Speed and cost are the whole pitch, so those get measured too.
