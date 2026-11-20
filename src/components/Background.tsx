@@ -20,8 +20,7 @@ export default function Background({ dark, light }: Props) {
     let raf = 0;
     let last = performance.now();
 
-    renderer.ready.then((ok) => ok && (canvas.style.opacity = "1"));
-    const resize = () => {
+        const resize = () => {
       const dpr = Math.min(devicePixelRatio || 1, 1.5);
       renderer.resize(innerWidth * dpr, innerHeight * dpr);
     };
@@ -40,7 +39,12 @@ export default function Background({ dark, light }: Props) {
       renderer.render(config, time, pointer);
     };
 
-    resize();
+    // size after the renderer is ready, or the canvas stays 1x1
+    renderer.ready.then((ok) => {
+      if (!ok) return;
+      resize();
+      canvas.style.opacity = "1";
+    });
     addEventListener("resize", resize);
     addEventListener("pointermove", onPointer);
     addEventListener("pointerdown", onPointer);
