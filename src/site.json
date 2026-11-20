@@ -130,26 +130,40 @@
   "chapters": [
     {
       "n": "1",
-      "t": "the go era",
-      "b": "The first thing people actually used was v2go, a Go tool that pulls about 50,000 V2Ray configs every hour, dedupes them and live-tests every single one through an embedded Xray-core in about two minutes. It has 155 stars now, which is wild. That’s when speed became my whole personality."
+      "t": "c++ and a half-burnt gpu",
+      "b": "I loved code as a kid. I went to NODET, Iran’s school for gifted and talented kids, and started with C++ in Code::Blocks on a pretty old Asus laptop. Super fun. I also half-burnt its GPU by accident. Worth it."
     },
     {
       "n": "2",
-      "t": "networks that fight back",
-      "b": "Next I got into networks that don’t want to be mapped. I wrote a scanner that pokes Cloudflare and Fastly edges and flags DPI tricks and MITM, then built a live dashboard that tracks internet shutdowns in Iran. Some code matters more than the rest."
+      "t": "the wrong major",
+      "b": "Then high school put me in experimental science. Weird time. Back home, if you want computer science, you’re supposed to take the math track. But I was always more of a problem solver than anything, so whenever something broke, I’d write a bash script to fix it. Then I went and studied biotechnology at university. Like you do."
     },
     {
       "n": "3",
-      "t": "diploma: done",
-      "b": "December 2025: I graduated from Computer Programming at Algonquin College. My curiosity didn’t. It got worse."
+      "t": "internet at 3 a.m.",
+      "b": "The internet in Iran was heavily filtered. You couldn’t reach half of anything. Even pushing to GitHub meant waiting until 3 a.m. for a connection that actually worked. I hated that. It’s also why free internet and VPN tools are personal for me."
     },
     {
       "n": "4",
+      "t": "canada, finally",
+      "b": "So I left and finally studied the thing I actually loved: Computer Programming at Algonquin College. Graduated in December 2025 with an A."
+    },
+    {
+      "n": "5",
+      "t": "a networking guy who codes",
+      "b": "I really get how the network layer works, and most of my tools live there: v2go, cf-knife, a dashboard that tracks internet shutdowns in Iran. Open source networking is where I want to keep spending my time."
+    },
+    {
+      "n": "6",
       "t": "the memory rabbit hole",
-      "b": "Then I noticed AI agents forget everything, and it felt like a bug in the universe. Now most of my days go to memory systems, local-first stuff and open source. No regrets. Mostly."
+      "b": "Then I noticed AI agents forget everything, and it felt like a bug in the universe. So now a lot of my days also go to memory systems and local-first stuff. No regrets. Mostly."
     }
   ],
   "loves": [
+    {
+      "t": "free internet",
+      "b": "If you’ve ever waited until 3 a.m. to push a commit, you get it. VPNs, censorship tools, anything that keeps the internet open."
+    },
     {
       "t": "local-first",
       "b": "Your data. Your disk. If it needs someone else’s server to remember your name, you’re renting it."
@@ -165,6 +179,10 @@
     {
       "t": "open source",
       "b": "Reading other people’s code is the fastest way to get humbled. I love it."
+    },
+    {
+      "t": "off the keyboard",
+      "b": "Pretty chill guy. I used to play basketball. Tea or coffee, but let’s be honest, I’m a coffee addict."
     }
   ],
   "projects": [
@@ -318,8 +336,8 @@
         "the lore.",
         "speedrun edition."
       ],
-      "intro": "No “passionate developer” paragraph. Here’s what actually happened.",
-      "howIWork": "Ask why. Build a tiny version. Measure it. Find out it’s broken. Fix it. Then tell a room full of devs what happened."
+      "intro": "Kid with a C++ compiler, wrong major, filtered internet, then Canada. Here’s what actually happened.",
+      "howIWork": "Ask why. Build a tiny version. Measure it. Find out it’s broken. Fix it. Then tell a room full of devs what happened. The point of all of it is making people’s lives a little easier."
     },
     "projects": {
       "eyebrow": "projects",
