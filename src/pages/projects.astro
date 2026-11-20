@@ -1,31 +1,23 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Section from "@/components/Section.astro";
-import ProjectCard from "@/components/ProjectCard.astro";
-import { GITHUB_USERNAME } from "@/consts";
-import { getProjects } from "@/lib/projects";
-
-const projects = await getProjects();
+import Base from "@/layouts/Base.astro";
+import PageHead from "@/components/PageHead.astro";
+import Ext from "@/components/Ext.astro";
+import site from "@/site.json";
+const c = site.pageCopy.projects;
 ---
 
-<Layout title="Project Registry - Danial Samadi">
-  <Section title="Registry" index="R-01">
-    <div class="tag opacity-60 mb-6">
-      &gt;&gt;&gt; COMPLETE UNIT MANIFEST / {projects.length} ENTRIES / SORTED BY
-      STAR COUNT DESC
-    </div>
-    <div class="blueprint grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {projects.map((p, i) => <ProjectCard project={p} index={i} />)}
-    </div>
-    <div class="flex justify-end mt-6">
-      <a
-        href={`https://github.com/${GITHUB_USERNAME}?tab=repositories`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="tag border border-[#2a2a2a] px-6 py-3 hover:bg-hazard hover:text-[#0a0a0a] transition-colors"
-      >
-        [ EXTERNAL ARCHIVE / GITHUB &gt;&gt;&gt; ]
-      </a>
-    </div>
-  </Section>
-</Layout>
+<Base title="projects" description="Things Dani built and broke: Mnemosyne, Synapse, memory evals, v2go, cf-knife and more.">
+  <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+  <div class="grid projects">
+    {site.projects.map((p) => (
+      <article class="card project">
+        <span class="foot-note">{p.tag}</span>
+        <h2 class="title3">{p.name}</h2>
+        <p>{p.story}</p>
+        {p.url
+          ? <a href={p.url} class="press link">{c.urlLabel.replace(" ↗", "")} <Ext /></a>
+          : <span class="foot-note soon">{c.noUrlLabel}</span>}
+      </article>
+    ))}
+  </div>
+</Base>

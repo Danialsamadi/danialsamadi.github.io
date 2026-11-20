@@ -1,0 +1,15 @@
+---
+const { eyebrow, title, intro } = Astro.props as {
+  eyebrow: string;
+  title: string[];
+  intro?: string;
+};
+---
+
+<header class="page-head">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1 class="large">
+    {title.map((t, i) => (<>{i > 0 && <br />}{t}</>))}
+  </h1>
+  {intro && <p class="intro">{intro}</p>}
+</header>

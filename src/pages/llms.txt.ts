@@ -1,61 +1,42 @@
-import { ABOUT_ME, GITHUB_USERNAME, KNOWN_TECH, SITE_TITLE } from "@/consts";
-import { getProjects } from "@/lib/projects";
+import site from "@/site.json";
+import { getPosts } from "@/lib";
 
-// llms.txt spec: https://llmstxt.org — regenerated from live GitHub data on every build
+// llms.txt spec: https://llmstxt.org
 export async function GET() {
-  const projects = await getProjects();
+  const base = "https://0xdanis.com";
+  const posts = await getPosts();
+  const body = `# dani samadi
 
-  const projectLines = projects
-    .map((p) => {
-      const meta = [
-        p.language,
-        p.stars > 0 ? `${p.stars} stars` : null,
-        `last updated ${p.pushed.slice(0, 10)}`,
-      ]
-        .filter(Boolean)
-        .join(", ");
-      const link = p.url
-        ? `[${p.name}](${p.url})`
-        : `${p.name} (private repository)`;
-      const demo = p.homepage ? ` Live demo: ${p.homepage}` : "";
-      return `- ${link}: ${p.description} (${meta})${demo}`;
-    })
-    .join("\n");
+> ${site.home.title.join(" ")} Open source, local-first, benchmarked. Computer Programming graduate of Algonquin College (Dec 2025). All work lives at ${site.links.github}.
 
-  const body = `# ${SITE_TITLE}
-
-> Portfolio of ${SITE_TITLE} — full-stack developer and systems programmer based in Ottawa, Canada. Computer Programming graduate of Algonquin College (December 2025). Specializes in high-performance Go tooling, network utilities, and modern web applications. All open-source work lives at https://github.com/${GITHUB_USERNAME}.
-
-${ABOUT_ME}
+${site.home.body.join(" ")}
 
 ## Pages
 
-- [Home](https://0xdanis.com/): Overview, featured projects, skills, and bio
-- [Projects](https://0xdanis.com/projects): Complete registry of projects, pulled live from the GitHub API at build time
-- [Contact](https://0xdanis.com/contact): Contact form and direct channels
-- [Resume](https://0xdanis.com/Resume.pdf): Resume in PDF form
-
+- [Home](${base}/)
+- [About](${base}/about): ${site.pageCopy.about.intro}
+- [Projects](${base}/projects): ${site.pageCopy.projects.intro}
+- [Writing](${base}/writing): ${site.pageCopy.writing.intro}
+- [Experience](${base}/experience)
+- [Contact](${base}/contact)
+${site.links.resume ? `- [Resume](${base}${site.links.resume})\n` : ""}
 ## Projects
 
-${projectLines}
-
+${site.projects.map((p) => `- ${p.url ? `[${p.name}](${p.url})` : p.name}: ${p.story} (${p.tag})`).join("\n")}
+${posts.length ? `\n## Writing\n\n${posts.map((p) => `- [${p.data.title}](${base}/writing/${p.id})`).join("\n")}\n` : ""}
 ## Skills
 
-${KNOWN_TECH.join(", ")}
+${site.stack.join(", ")}
 
 ## Contact
 
-- Email: danisamadi11@gmail.com
-- GitHub: https://github.com/${GITHUB_USERNAME}
-- LinkedIn: https://linkedin.com/in/Danialsamadis
+- Email: ${site.links.email.replace("mailto:", "")}
+- GitHub: ${site.links.github}
+- LinkedIn: ${site.links.linkedin}
 
 ## Optional
 
-- [GitHub profile README](https://github.com/${GITHUB_USERNAME}/${GITHUB_USERNAME}): Profile configuration and stats
-- [Sitemap](https://0xdanis.com/sitemap-index.xml)
+- [Sitemap](${base}/sitemap-index.xml)
 `;
-
-  return new Response(body, {
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
-  });
+  return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });
 }

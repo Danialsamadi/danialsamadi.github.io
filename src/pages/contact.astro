@@ -1,166 +1,27 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Section from "@/components/Section.astro";
-
-const contactMethods = [
-  {
-    name: "EMAIL",
-    value: "DANISAMADI11@GMAIL.COM",
-    link: "mailto:danisamadi11@gmail.com",
-  },
-  {
-    name: "GITHUB",
-    value: "GITHUB.COM/DANIALSAMADI",
-    link: "https://github.com/Danialsamadi",
-  },
-  {
-    name: "LINKEDIN",
-    value: "LINKEDIN.COM/IN/DANIALSAMADIS",
-    link: "https://linkedin.com/in/Danialsamadis",
-  },
+import Base from "@/layouts/Base.astro";
+import PageHead from "@/components/PageHead.astro";
+import Ext from "@/components/Ext.astro";
+import site from "@/site.json";
+const c = site.pageCopy.contact;
+const { links } = site;
+const rows = [
+  { k: "Email", v: links.email.replace("mailto:", ""), href: links.email },
+  { k: "GitHub", v: "github.com/Danialsamadi", href: links.github },
+  { k: "LinkedIn", v: "linkedin.com/in/danialsamadis", href: links.linkedin },
+  ...(links.resume ? [{ k: "Resume", v: "PDF", href: links.resume }] : []),
 ];
-
-const inputClass =
-  "w-full px-3 py-3 bg-[#0a0a0a] border border-[#2a2a2a] focus:outline-none focus:border-[#ff2a2a] text-[#eaeaea] placeholder:text-[#eaeaea]/30 placeholder:uppercase text-sm";
 ---
 
-<Layout title="Contact - Danial Samadi">
-  <Section title="Transmit" index="TX-01">
-    <div class="max-w-4xl space-y-10">
-      <!-- Success Message -->
-      <div id="success-message" class="hidden border border-hazard p-5">
-        <p class="tag text-hazard font-bold">
-          &gt;&gt;&gt; TRANSMISSION RECEIVED
-        </p>
-        <p class="text-sm mt-2 opacity-90">
-          Message logged. Expect a response on the return channel shortly.
-        </p>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="blueprint grid-cols-1">
-        <div class="p-4 tag opacity-60">
-          UPLINK FORM / ALL FIELDS REQUIRED / ENCRYPTION: TLS 1.3
-        </div>
-        <form
-          action="https://api.web3forms.com/submit"
-          method="POST"
-          class="p-5 space-y-6"
-        >
-          <input
-            type="hidden"
-            name="access_key"
-            value="42a0278f-a9d6-4510-84ed-291243eb49dd"
-          />
-          <input
-            type="hidden"
-            name="redirect"
-            value="https://Danisdev.me/contact?success=true"
-          />
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label for="name" class="tag block mb-2"
-                >[ FIELD 01 / NAME ]</label
-              >
-              <input
-                type="text"
-                name="name"
-                id="name"
-                required
-                class={inputClass}
-                placeholder="OPERATOR NAME"
-              />
-            </div>
-            <div>
-              <label for="email" class="tag block mb-2"
-                >[ FIELD 02 / RETURN CHANNEL ]</label
-              >
-              <input
-                type="email"
-                name="email"
-                id="email"
-                required
-                class={inputClass}
-                placeholder="YOUR.EMAIL@EXAMPLE.COM"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label for="subject" class="tag block mb-2"
-              >[ FIELD 03 / SUBJECT ]</label
-            >
-            <input
-              type="text"
-              name="subject"
-              id="subject"
-              required
-              class={inputClass}
-              placeholder="TRANSMISSION SUBJECT"
-            />
-          </div>
-
-          <div>
-            <label for="message" class="tag block mb-2"
-              >[ FIELD 04 / PAYLOAD ]</label
-            >
-            <textarea
-              name="message"
-              id="message"
-              rows="6"
-              required
-              class={`${inputClass} resize-none`}
-              placeholder="PROJECT, OPPORTUNITY, OR GENERAL HAIL"></textarea>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full px-6 py-4 bg-hazard text-[#0a0a0a] font-bold tag hover:opacity-80 transition-opacity"
-          >
-            [ TRANSMIT &gt;&gt;&gt; ]
-          </button>
-        </form>
-      </div>
-
-      <!-- Contact Methods -->
-      <div>
-        <div class="tag opacity-60 mb-4">/// DIRECT CHANNELS</div>
-        <div class="blueprint grid-cols-1 md:grid-cols-3">
-          {
-            contactMethods.map((method) => (
-              <a
-                href={method.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-5 hover:!bg-[#eaeaea] hover:text-[#0a0a0a] transition-colors group"
-              >
-                <div class="tag text-hazard group-hover:text-[#0a0a0a] font-bold">
-                  {method.name} /
-                </div>
-                <div class="tag mt-2 break-all">{method.value}</div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
+<Base title="contact" description="Memory systems, local-first stuff, weird network bugs, or a talk for your meetup. Dani replies fast.">
+  <div class="contact">
+    <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.body} />
+    <div class="group">
+      {rows.map((r) => (
+        <a href={r.href} class="row">
+          <span class="grow"><b>{r.k}</b><small class="contact-v">{r.v}</small></span><Ext />
+        </a>
+      ))}
     </div>
-  </Section>
-
-  <script>
-    // Check for success parameter in URL
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get("success") === "true") {
-      const successMessage = document.getElementById("success-message");
-      if (successMessage) {
-        successMessage.classList.remove("hidden");
-        successMessage.scrollIntoView({ behavior: "smooth", block: "start" });
-        window.history.replaceState(
-          {},
-          document.title,
-          window.location.pathname,
-        );
-      }
-    }
-  </script>
-</Layout>
+  </div>
+</Base>

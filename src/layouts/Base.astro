@@ -1,0 +1,60 @@
+---
+import { ClientRouter } from "astro:transitions";
+import Background from "@/components/Background.tsx";
+import Ext from "@/components/Ext.astro";
+import site from "@/site.json";
+import "@/styles/global.css";
+
+const { title, description, narrow = false } = Astro.props as {
+  title: string;
+  description: string;
+  narrow?: boolean;
+};
+const path = Astro.url.pathname.replace(/\/$/, "");
+const cur = (route: string) => (path === route || path.startsWith(route + "/") ? "page" : undefined);
+const full = title === "dani samadi" ? title : `${title} · dani samadi`;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <title>{full}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="/ghost.gif" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <ClientRouter />
+  </head>
+  <body>
+    <Background client:load transition:persist dark={site.background.dark as any} light={site.background.light as any} />
+    <header class="glass topbar">
+      <div class="topbar-in">
+        <a href="/" class="press brand" aria-label="dani samadi, home">
+          <img src="/ghost.gif" alt="" width="28" height="28" class="ghost" /><span>dani samadi</span>
+        </a>
+        <nav aria-label="Main" class="tb-tabs">
+          {site.tabs.map((t) => (
+            <a href={t.route} class="press tab" aria-current={cur(t.route)}>{t.label}</a>
+          ))}
+        </nav>
+        <div class="ext-links">
+          <a href={site.links.github} class="press">GitHub <Ext /></a>
+          <a href={site.links.linkedin} class="press">LinkedIn <Ext /></a>
+        </div>
+      </div>
+    </header>
+    <nav aria-label="Main" class="bb glass">
+      {site.tabs.map((t) => (
+        <a href={t.route} class="press bb-item" aria-current={cur(t.route)}>
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d={t.iconPath}></path></svg>
+          <span>{t.label}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="content">
+      <main class:list={{ narrow }}><slot /></main>
+      <footer class="foot">{site.pageCopy.footer}</footer>
+    </div>
+  </body>
+</html>
