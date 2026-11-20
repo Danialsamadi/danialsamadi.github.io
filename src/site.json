@@ -111,10 +111,6 @@
   },
   "now": [
     {
-      "k": "fixing",
-      "v": "Mnemosyne had eight fact stores that all kinda did the same job. Bugs everywhere. I’m merging them into one ledger. It’s surgery."
-    },
-    {
       "k": "building",
       "v": "Synapse. Same problem, way less stuff. It only cares about two numbers: speed and cost."
     },
@@ -222,12 +218,6 @@
     }
   ],
   "experience": [
-    {
-      "when": "now",
-      "what": "Lead, Mnemosyne",
-      "where": "open source",
-      "b": "Architecture, roadmap, and the bugs nobody else wants."
-    },
     {
       "when": "now",
       "what": "Building Synapse",
@@ -367,7 +357,6 @@
     "footer": "© 2026 dani samadi · 0xdanis.com · the background is live webgl. poke it."
   },
   "postSlugs": [
-    "my-memory-system-scored-25-percent-on-its-own-test",
     "your-agent-is-ignoring-your-rules-file",
     "i-stopped-grading-my-memory-system-on-locomo",
     "sqlite-made-my-search-460x-faster"
