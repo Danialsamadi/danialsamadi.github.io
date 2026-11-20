@@ -170,51 +170,51 @@
   "projects": [
     {
       "name": "synapse",
-      "tag": "typescript · local-first memory · ★ 68",
+      "tag": "typescript · mcp · ★ 68",
       "url": "https://github.com/Danialsamadi/synapse",
-      "story": "A local-first memory system for AI agents: write memory in, embed it locally, answer by retrieval. The hard part is getting agents to check memory before they reply. Rules files are just suggestions, so Synapse uses tool_choice and hooks instead."
+      "story": "Chat history is a log. Synapse is a brain. It's a local-first memory for AI agents, all on SQLite. It pulls facts out of conversations and pins single-value facts to keys like user.employer, so a new job overwrites the old one instead of both being \"true\". Retrieval mixes FTS5/BM25 with vector search, no LLM by default, and every hit carries a trust note like \"stored 8 months ago, may be outdated\". Oh, and it refuses to store anything that looks like a credential."
     },
     {
       "name": "v2go",
       "tag": "go · ★ 155",
       "url": "https://github.com/Danialsamadi/v2go",
-      "story": "Grabs 20,000+ V2Ray configs, dedupes them and rebuilds the list every 6 hours. 11 seconds a run. Go was the right call."
+      "story": "Public V2Ray subscription lists are mostly dead servers. A port check doesn't tell you much either: something answering on 443 says nothing about whether the proxy works. So v2go runs every config through an embedded Xray-core and sends a real request through it. Every hour it grabs about 50,000 configs, dedupes them down to 10–15k, live-tests them all in about two minutes and publishes the few hundred that actually carried traffic. No subprocesses, no open ports."
     },
     {
       "name": "cf-knife",
       "tag": "go · ★ 10",
       "url": "https://github.com/Danialsamadi/cf-knife",
-      "story": "A pocket knife for networks that hate being mapped. It probes Cloudflare and Fastly edges over TLS and HTTP and flags DPI tricks and MITM."
+      "story": "A pocket knife for networks that hate being mapped. It scans Cloudflare and Fastly ranges in layers (TCP, TLS, HTTP/1.1, HTTP/2, HTTP/3) and has nmap-style timing templates, from paranoid to insane. Then it gets nosy. It fragments TLS ClientHellos to test DPI, compares your resolver against DoH to catch DNS poisoning, and checks certificate chains for MITM. It's one static binary, and the scan state lives in SQLite, so you can resume."
     },
     {
       "name": "iran-internet-monitor",
-      "tag": "html · ★ 16",
+      "tag": "go · open data · ★ 16",
       "url": "https://github.com/Danialsamadi/iran-internet-monitor",
-      "story": "A live dashboard tracking connectivity and censorship in Iran. When the internet goes dark, somebody should be counting."
+      "story": "When the internet goes dark, somebody should be counting. Every 10 minutes, one Go binary probes 40 endpoints and about 1,070 Iranian IP ranges from outside Iran, and an LLM analyst reads the results. Per-operator data is what separates an ISP outage from a national shutdown. Every pass is a git commit, so the whole history is open data. The probes are honest about where they run: if a fake address \"connects\", something is intercepting traffic and the sweep gets thrown out instead of published."
     },
     {
       "name": "llm-map",
-      "tag": "javascript · 3d chart",
+      "tag": "javascript · three.js · cloudflare workers",
       "url": "https://github.com/Danialsamadi/llm-map",
-      "story": "Every AI language model on one interactive 3D chart. Compare smartness, cost, speed and ARC-AGI-2 scores, filter by date, and step inside the chart. English and Persian."
+      "story": "Every AI language model on one 3D chart. Each dot is a model, each line is one company's models from oldest to newest, and you pick the three axes: smartness, cost, speed, price, ARC-AGI-2 or release date. One switch lights up the models nothing else beats on all three. You can drag a little figure onto a line and ride through a company's history. It runs on a Cloudflare Worker that merges Artificial Analysis and ARC Prize data. It's a PWA, and it speaks Persian, right to left, with the Solar Hijri calendar."
     },
     {
       "name": "syncodoro",
-      "tag": "ts · pwa · ★ 3",
+      "tag": "typescript · react · pwa · ★ 3",
       "url": "https://github.com/Danialsamadi/Syncodoro",
-      "story": "A Pomodoro timer that works offline and syncs when you’re back online. It shows stats too, so you can see how locked in you really were. Usually less than you think."
+      "story": "A Pomodoro timer that doesn't care if you're offline. Sessions go into IndexedDB first and sync to Supabase when you're back. You can tag and annotate sessions, export them as CSV or ICS straight into your calendar, and look at stats that show how locked in you really were. Usually less than you think."
     },
     {
       "name": "free-macos",
       "tag": "python · ★ 6",
       "url": "https://github.com/Danialsamadi/Free-macos",
-      "story": "macOS never shipped Linux’s free command, so now it does. Live memory stats, right in your terminal."
+      "story": "macOS never shipped Linux's free command, so I wrote one. It's live in your terminal, with progress bars for used, free, active, wired and compressed memory. Alias it to free and forget it was ever missing."
     },
     {
       "name": "netray",
-      "tag": "go · ★ 1",
+      "tag": "go · tui · ★ 1",
       "url": "https://github.com/Danialsamadi/Netray",
-      "story": "Network diagnostics in Go. Small, sharp, no fluff."
+      "story": "A scanner for Cloudflare VLESS/VMess configs. Feed it a file or a subscription URL and it measures TCP and TLS handshake latency per IP, then exports the best ones ranked. The Clean IP Finder goes from a 30-second scan of about 4K IPs up to all ~1.5M Cloudflare IPv4 addresses on two ports. Interactive TUI or headless, your pick."
     }
   ],
   "experience": [
