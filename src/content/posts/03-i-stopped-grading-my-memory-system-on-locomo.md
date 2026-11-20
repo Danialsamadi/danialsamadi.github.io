@@ -15,8 +15,9 @@ So you can score well by being wrong in the right way. Wild.
 
 - LongMemEval as the main benchmark. MIT licensed, solid.
 - BEAM, MemoryAgentBench and ConvoMem on the radar for later.
+
 My harness downloads the dataset, ingests it, scores with an LLM judge and dumps JSONL traces so I can see exactly where things went sideways.
 
 Starting small: the LongMemEval-S oracle set, 50 questions. Then scale up.
 
-And for Synapse I care about more than accuracy. Speed and cost are the whole pitch, so those get measured too.
+And for Synapse I care about more than accuracy: Speed and cost are the whole pitch, so those get measured too.

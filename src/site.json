@@ -112,11 +112,11 @@
   "now": [
     {
       "k": "building",
-      "v": "Synapse. Same problem, way less stuff. It only cares about two numbers: speed and cost."
+      "v": "Synapse, a local-first memory for agents. It only cares about two numbers: speed and cost."
     },
     {
       "k": "measuring",
-      "v": "Both of them against LongMemEval. Vibes are not a metric."
+      "v": "Synapse against LongMemEval. Vibes are not a metric."
     },
     {
       "k": "teaching",
