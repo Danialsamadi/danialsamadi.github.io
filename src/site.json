@@ -131,7 +131,7 @@
     {
       "n": "1",
       "t": "the go era",
-      "b": "The first thing people actually used was a Go tool that pulls 20,000+ V2Ray configs, dedupes them and rebuilds the list every 6 hours. A run takes 11 seconds. It has 155 stars now, which is wild. That’s when speed became my whole personality."
+      "b": "The first thing people actually used was v2go, a Go tool that pulls about 50,000 V2Ray configs every hour, dedupes them and live-tests every single one through an embedded Xray-core in about two minutes. It has 155 stars now, which is wild. That’s when speed became my whole personality."
     },
     {
       "n": "2",
