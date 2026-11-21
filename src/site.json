@@ -119,10 +119,6 @@
       "v": "Networking tools in Go. Scanners, config testers, anything that keeps the internet open."
     },
     {
-      "k": "teaching",
-      "v": "Lunch & learns at work on Claude. The goal is for the whole company to show up."
-    },
-    {
       "k": "digging",
       "v": "Weird web behavior, for a talk. I’d rather build a tiny broken version than read another tutorial."
     }
