@@ -327,8 +327,7 @@
         "the lore.",
         "speedrun edition."
       ],
-      "intro": "Kid with a C++ compiler, wrong major, filtered internet, then Canada. Here’s what actually happened.",
-      "howIWork": "Ask why. Build a tiny version. Measure it. Find out it’s broken. Fix it. Then tell a room full of devs what happened. The point of all of it is making people’s lives a little easier."
+      "intro": "Kid with a C++ compiler, wrong major, filtered internet, then Canada. Here’s what actually happened."
     },
     "projects": {
       "eyebrow": "projects",
