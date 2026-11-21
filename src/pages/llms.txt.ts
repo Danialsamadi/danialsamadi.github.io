@@ -5,7 +5,7 @@ import { getPosts } from "@/lib";
 export async function GET() {
   const base = "https://0xdanis.com";
   const posts = await getPosts();
-  const body = `# dani samadi
+  const body = `# Dani
 
 > ${site.home.title.join(" ")} Open source, local-first, benchmarked. Computer Programming graduate of Algonquin College (Dec 2025). All work lives at ${site.links.github}.
 

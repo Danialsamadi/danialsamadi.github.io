@@ -5,7 +5,7 @@ import { getPosts } from "@/lib";
 export async function GET(context: APIContext) {
   const posts = await getPosts();
   return rss({
-    title: "dani samadi",
+    title: "Dani",
     description: "Notes from the rabbit hole: what I built, what broke, and the numbers.",
     site: context.site!,
     items: posts.map((p) => ({
