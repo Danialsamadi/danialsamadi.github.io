@@ -3,6 +3,7 @@
   "name": "0xdanis",
   "compatibility_date": "2026-11-21",
   // Static Astro build; no Worker code needed.
+  "routes": [{ "pattern": "0xdanis.com", "custom_domain": true }],
   "assets": {
     "directory": "./dist"
   }
