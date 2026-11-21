@@ -2,27 +2,30 @@
 import Base from "@/layouts/Base.astro";
 import Ext from "@/components/Ext.astro";
 import Chev from "@/components/Chev.astro";
-import site from "@/site.json";
 import { getPosts, meta } from "@/lib";
-
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
 const { home, now, links } = site;
 const latest = (await getPosts()).slice(0, 2);
 ---
 
-<Base title="Dani" description="Dani Samadi, a networking guy who codes. Open source Go tools for scanning, testing and keeping the internet open.">
+<Base title={t("brand")} description={t("desc.home")}>
   <section class="hero">
     <p class="eyebrow">{home.eyebrow}</p>
     <h1 class="large">{home.title[0]}<br />{home.title[1]}</h1>
     {home.body.map((p, i) => <p style={`max-width:34em;${i === 1 ? "margin-bottom:32px" : ""}`}>{p}</p>)}
     <div class="btns">
-      <a href="/projects" class="press btn primary">see what broke</a>
-      <a href="/blog" class="press btn">read my blog</a>
+      <a href={localize("/projects", lang)} class="press btn primary">{t("home.cta.projects")}</a>
+      <a href={localize("/blog", lang)} class="press btn">{t("home.cta.blog")}</a>
       <a href={links.github} class="press btn">GitHub <Ext /></a>
       <a href={links.linkedin} class="press btn">LinkedIn <Ext /></a>
     </div>
   </section>
   <section class="block">
-    <h2 class="title">rn</h2>
+    <h2 class="title">{t("home.rn")}</h2>
     <div class="group">
       {now.map((n) => <div class="kv"><span>{n.k}</span><span>{n.v}</span></div>)}
     </div>
@@ -30,13 +33,13 @@ const latest = (await getPosts()).slice(0, 2);
   {latest.length > 0 && (
     <section class="block">
       <div class="section-head">
-        <h2 class="title">latest posts</h2>
-        <a href="/blog" class="link-btn">see all</a>
+        <h2 class="title">{t("home.latest")}</h2>
+        <a href={localize("/blog", lang)} class="link-btn">{t("home.seeAll")}</a>
       </div>
       <div class="group">
         {latest.map((p) => (
-          <a href={`/blog/${p.id}`} class="row">
-            <span class="grow"><b>{p.data.title}</b><small>{meta(p)}</small></span><Chev />
+          <a href={localize(`/blog/${p.id}`, lang)} class="row">
+            <span class="grow" lang="en"><b><bdi>{p.data.title}</bdi></b><small><bdi>{meta(p)}</bdi></small></span><Chev />
           </a>
         ))}
       </div>

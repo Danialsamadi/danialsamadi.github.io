@@ -2,24 +2,28 @@
 import Base from "@/layouts/Base.astro";
 import PageHead from "@/components/PageHead.astro";
 import Ext from "@/components/Ext.astro";
-import site from "@/site.json";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
 const c = site.pageCopy.contact;
 const { links } = site;
 const rows = [
-  { k: "Email", v: links.email.replace("mailto:", ""), href: links.email },
+  { k: t("contact.email"), v: links.email.replace("mailto:", ""), href: links.email },
   { k: "GitHub", v: "github.com/Danialsamadi", href: links.github },
   { k: "LinkedIn", v: "linkedin.com/in/danialsamadis", href: links.linkedin },
-  ...(links.resume ? [{ k: "Resume", v: "PDF", href: links.resume }] : []),
+  ...(links.resume ? [{ k: t("contact.resume"), v: "PDF", href: links.resume }] : []),
 ];
 ---
 
-<Base title="contact" description="Networking tools, weird network bugs, open source, or a talk for your meetup. Dani replies fast.">
+<Base title={site.tabs[4].label} description={t("desc.contact")}>
   <div class="contact">
     <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.body} />
     <div class="group">
       {rows.map((r) => (
         <a href={r.href} class="row">
-          <span class="grow"><b>{r.k}</b><small class="contact-v">{r.v}</small></span><Ext />
+          <span class="grow"><b>{r.k}</b><small class="contact-v"><bdi>{r.v}</bdi></small></span><Ext />
         </a>
       ))}
     </div>

@@ -2,17 +2,21 @@
 import Base from "@/layouts/Base.astro";
 import PageHead from "@/components/PageHead.astro";
 import Ext from "@/components/Ext.astro";
-import site from "@/site.json";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
 const c = site.pageCopy.projects;
 ---
 
-<Base title="projects" description="Things Dani built and broke: v2go, cf-knife, iran-internet-monitor and more.">
+<Base title={site.tabs[1].label} description={t("desc.projects")}>
   <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
   <div class="grid projects">
     {site.projects.map((p) => (
       <article class="card project">
-        <span class="foot-note">{p.tag}</span>
-        <h2 class="title3">{p.name}</h2>
+        <span class="foot-note"><bdi>{p.tag}</bdi></span>
+        <h2 class="title3" lang="en">{p.name}</h2>
         <p>{p.story}</p>
         {p.url
           ? <a href={p.url} class="press link">{c.urlLabel.replace(" ↗", "")} <Ext /></a>

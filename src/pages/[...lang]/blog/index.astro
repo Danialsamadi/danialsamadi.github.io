@@ -1,0 +1,26 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHead from "@/components/PageHead.astro";
+import Chev from "@/components/Chev.astro";
+import { getPosts, meta } from "@/lib";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
+const c = site.pageCopy.blog;
+const posts = await getPosts();
+---
+
+<Base title={site.tabs[2].label} description={t("desc.blog")}>
+  <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+  {posts.length > 0 ? (
+    <div class="group">
+      {posts.map((p) => (
+        <a href={localize(`/blog/${p.id}`, lang)} class="row post">
+          <span class="grow" lang="en"><b><bdi>{p.data.title}</bdi></b><small><bdi>{meta(p)}</bdi></small></span><Chev />
+        </a>
+      ))}
+    </div>
+  ) : <p class="foot-note">{t("blog.empty")}</p>}
+</Base>

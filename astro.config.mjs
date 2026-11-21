@@ -6,5 +6,5 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://0xdanis.com",
   integrations: [react(), sitemap()],
-  redirects: { "/writing": "/blog", "/writing/[slug]": "/blog/[slug]" },
+  redirects: { "/writing": "/blog" },
 });

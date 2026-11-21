@@ -1,0 +1,41 @@
+---
+import { render } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import Ext from "@/components/Ext.astro";
+import { getPosts, meta } from "@/lib";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return langPaths().flatMap(({ params }) =>
+    posts.map((post) => ({ params: { ...params, slug: post.id }, props: { post } })),
+  );
+}
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
+const { post } = Astro.props;
+const { Content } = await render(post);
+const desc = post.body?.split(/\n\n/)[0].replace(/[*_`]/g, "").slice(0, 160) ?? post.data.title;
+---
+
+<Base title={post.data.title} description={desc} narrow>
+  <article class="post-page">
+    <a href={localize("/blog", lang)} class="back">
+      <svg class="flip-rtl" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"></path></svg>{t("blog.back")}
+    </a>
+    {t("blog.inEnglish") && <p class="foot-note">{t("blog.inEnglish")}</p>}
+    <div lang="en" dir="ltr">
+      <p class="eyebrow">{meta(post)}</p>
+      <h1>{post.data.title}</h1>
+      <div class="prose"><Content /></div>
+    </div>
+    <div class="card post-foot">
+      <b>{site.pageCopy.blog.postFooter}</b>
+      <div class="btns">
+        <a href={site.links.linkedin} class="press btn">LinkedIn <Ext /></a>
+        <a href={site.links.email} class="press btn primary">{t("post.emailMe")}</a>
+      </div>
+    </div>
+  </article>
+</Base>

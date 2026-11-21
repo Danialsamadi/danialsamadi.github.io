@@ -1,11 +1,15 @@
 ---
 import Base from "@/layouts/Base.astro";
 import PageHead from "@/components/PageHead.astro";
-import site from "@/site.json";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
 const c = site.pageCopy.about;
 ---
 
-<Base title="about" description="The lore, speedrun edition: from C++ as a kid in Iran to networking tools in Canada.">
+<Base title={site.tabs[0].label} description={t("desc.about")}>
   <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
   <ol class="timeline">
     {site.chapters.map((ch) => (
@@ -16,13 +20,13 @@ const c = site.pageCopy.about;
     ))}
   </ol>
   <section class="block">
-    <h2 class="title">stuff i love</h2>
+    <h2 class="title">{t("about.loves")}</h2>
     <div class="grid loves">
       {site.loves.map((l) => <div class="card loves"><h3>{l.t}</h3><p>{l.b}</p></div>)}
     </div>
   </section>
   <section class="block">
-    <h2 class="title">how i work</h2>
+    <h2 class="title">{t("about.howIWork")}</h2>
     <p style="max-width:34em">{c.howIWork}</p>
   </section>
 </Base>

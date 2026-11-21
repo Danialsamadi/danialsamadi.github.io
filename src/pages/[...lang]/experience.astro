@@ -1,0 +1,26 @@
+---
+import Base from "@/layouts/Base.astro";
+import PageHead from "@/components/PageHead.astro";
+import { getLangFromUrl, useTranslations, getSite, localize, langPaths } from "@/i18n/utils";
+export const getStaticPaths = langPaths;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
+const c = site.pageCopy.experience;
+---
+
+<Base title={site.tabs[3].label} description={t("desc.experience")}>
+  <PageHead eyebrow={c.eyebrow} title={c.title} />
+  <ol class="group">
+    {site.experience.map((e) => (
+      <li class="kv exp">
+        <span>{e.when}</span>
+        <div><h2>{e.what} <span>· <bdi>{e.where}</bdi></span></h2><p>{e.b}</p></div>
+      </li>
+    ))}
+  </ol>
+  <section class="block">
+    <h2 class="title">{c.stackTitle}</h2>
+    <div class="chips" lang="en">{site.stack.map((s) => <span>{s}</span>)}</div>
+  </section>
+</Base>
