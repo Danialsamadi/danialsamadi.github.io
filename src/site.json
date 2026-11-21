@@ -111,16 +111,16 @@
   },
   "now": [
     {
-      "k": "building",
-      "v": "Synapse, a local-first memory for agents. It only cares about two numbers: speed and cost."
+      "k": "working",
+      "v": "Junior Software Developer at Giatec. Shipping stuff."
     },
     {
-      "k": "measuring",
-      "v": "Synapse against LongMemEval. Vibes are not a metric."
+      "k": "building",
+      "v": "Networking tools in Go. Scanners, config testers, anything that keeps the internet open."
     },
     {
       "k": "teaching",
-      "v": "Lunch & learns at work on Claude: memory, artifacts, video. The goal is for the whole company to show up."
+      "v": "Lunch & learns at work on Claude. The goal is for the whole company to show up."
     },
     {
       "k": "digging",
@@ -129,34 +129,29 @@
   ],
   "chapters": [
     {
-      "n": "1",
       "t": "c++ and a half-burnt gpu",
-      "b": "I loved code as a kid. I went to NODET, Iran’s school for gifted and talented kids, and started with C++ in Code::Blocks on a pretty old Asus laptop. Super fun. I also half-burnt its GPU by accident. Worth it."
+      "b": "I loved code as a kid. I went to NODET, Iran’s school for gifted and talented kids, and started with C++ in Code::Blocks on a pretty old Asus laptop. Super fun. I also half-burnt its GPU by accident. Worth it.",
+      "when": "as a kid"
     },
     {
-      "n": "2",
       "t": "the wrong major",
-      "b": "Then high school put me in experimental science. Weird time. Back home, if you want computer science, you’re supposed to take the math track. But I was always more of a problem solver than anything, so whenever something broke, I’d write a bash script to fix it. Then I went and studied biotechnology at university. Like you do."
+      "b": "Then high school put me in experimental science. Weird time. Back home, if you want computer science, you’re supposed to take the math track. But I was always more of a problem solver than anything, so whenever something broke, I’d write a bash script to fix it. Then I went and studied biotechnology at university. Like you do.",
+      "when": "high school"
     },
     {
-      "n": "3",
       "t": "internet at 3 a.m.",
-      "b": "The internet in Iran was heavily filtered. You couldn’t reach half of anything. Even pushing to GitHub meant waiting until 3 a.m. for a connection that actually worked. I hated that. It’s also why free internet and VPN tools are personal for me."
+      "b": "The internet in Iran was heavily filtered. You couldn’t reach half of anything. Even pushing to GitHub meant waiting until 3 a.m. for a connection that actually worked. I hated that. It’s also why free internet and VPN tools are personal for me.",
+      "when": "back in iran"
     },
     {
-      "n": "4",
       "t": "canada, finally",
-      "b": "So I left and finally studied the thing I actually loved: Computer Programming at Algonquin College. Graduated in December 2025 with an A."
+      "b": "So I left and finally studied the thing I actually loved: Computer Programming at Algonquin College. Graduated in December 2025 with an A.",
+      "when": "dec 2025"
     },
     {
-      "n": "5",
       "t": "a networking guy who codes",
-      "b": "I really get how the network layer works, and most of my tools live there: v2go, cf-knife, a dashboard that tracks internet shutdowns in Iran. Open source networking is where I want to keep spending my time."
-    },
-    {
-      "n": "6",
-      "t": "the memory rabbit hole",
-      "b": "Then I noticed AI agents forget everything, and it felt like a bug in the universe. So now a lot of my days also go to memory systems and local-first stuff. No regrets. Mostly."
+      "b": "I really get how the network layer works, and most of my tools live there: v2go, cf-knife, a dashboard that tracks internet shutdowns in Iran. Open source networking is where I want to keep spending my time.",
+      "when": "now"
     }
   ],
   "loves": [
@@ -187,12 +182,6 @@
   ],
   "projects": [
     {
-      "name": "synapse",
-      "tag": "typescript · mcp · ★ 68",
-      "url": "https://github.com/Danialsamadi/synapse",
-      "story": "Chat history is a log. Synapse is a brain. It's a local-first memory for AI agents, all on SQLite. It pulls facts out of conversations and pins single-value facts to keys like user.employer, so a new job overwrites the old one instead of both being \"true\". Retrieval mixes FTS5/BM25 with vector search, no LLM by default, and every hit carries a trust note like \"stored 8 months ago, may be outdated\". Oh, and it refuses to store anything that looks like a credential."
-    },
-    {
       "name": "v2go",
       "tag": "go · ★ 155",
       "url": "https://github.com/Danialsamadi/v2go",
@@ -211,10 +200,22 @@
       "story": "When the internet goes dark, somebody should be counting. Every 10 minutes, one Go binary probes 40 endpoints and about 1,070 Iranian IP ranges from outside Iran, and an LLM analyst reads the results. Per-operator data is what separates an ISP outage from a national shutdown. Every pass is a git commit, so the whole history is open data. The probes are honest about where they run: if a fake address \"connects\", something is intercepting traffic and the sweep gets thrown out instead of published."
     },
     {
+      "name": "netray",
+      "tag": "go · tui · ★ 1",
+      "url": "https://github.com/Danialsamadi/Netray",
+      "story": "A scanner for Cloudflare VLESS/VMess configs. Feed it a file or a subscription URL and it measures TCP and TLS handshake latency per IP, then exports the best ones ranked. The Clean IP Finder goes from a 30-second scan of about 4K IPs up to all ~1.5M Cloudflare IPv4 addresses on two ports. Interactive TUI or headless, your pick."
+    },
+    {
       "name": "llm-map",
       "tag": "javascript · three.js · cloudflare workers",
       "url": "https://github.com/Danialsamadi/llm-map",
       "story": "Every AI language model on one 3D chart. Each dot is a model, each line is one company's models from oldest to newest, and you pick the three axes: smartness, cost, speed, price, ARC-AGI-2 or release date. One switch lights up the models nothing else beats on all three. You can drag a little figure onto a line and ride through a company's history. It runs on a Cloudflare Worker that merges Artificial Analysis and ARC Prize data. It's a PWA, and it speaks Persian, right to left, with the Solar Hijri calendar."
+    },
+    {
+      "name": "synapse",
+      "tag": "typescript · mcp · ★ 68",
+      "url": "https://github.com/Danialsamadi/synapse",
+      "story": "Chat history is a log. Synapse is a brain. It's a local-first memory for AI agents, all on SQLite. It pulls facts out of conversations and pins single-value facts to keys like user.employer, so a new job overwrites the old one instead of both being \"true\". Retrieval mixes FTS5/BM25 with vector search, no LLM by default, and every hit carries a trust note like \"stored 8 months ago, may be outdated\". Oh, and it refuses to store anything that looks like a credential."
     },
     {
       "name": "syncodoro",
@@ -227,21 +228,9 @@
       "tag": "python · ★ 6",
       "url": "https://github.com/Danialsamadi/Free-macos",
       "story": "macOS never shipped Linux's free command, so I wrote one. It's live in your terminal, with progress bars for used, free, active, wired and compressed memory. Alias it to free and forget it was ever missing."
-    },
-    {
-      "name": "netray",
-      "tag": "go · tui · ★ 1",
-      "url": "https://github.com/Danialsamadi/Netray",
-      "story": "A scanner for Cloudflare VLESS/VMess configs. Feed it a file or a subscription URL and it measures TCP and TLS handshake latency per IP, then exports the best ones ranked. The Clean IP Finder goes from a 30-second scan of about 4K IPs up to all ~1.5M Cloudflare IPv4 addresses on two ports. Interactive TUI or headless, your pick."
     }
   ],
   "experience": [
-    {
-      "when": "now",
-      "what": "Building Synapse",
-      "where": "side project",
-      "b": "Memory tools that agents check before every answer, even when they’d rather not."
-    },
     {
       "when": "now",
       "what": "Junior Software Developer",
@@ -249,10 +238,16 @@
       "b": "Shipping at work. I also run company-wide lunch & learns on Claude."
     },
     {
+      "when": "now",
+      "what": "Building Synapse",
+      "where": "side project",
+      "b": "Memory tools that agents check before every answer, even when they’d rather not."
+    },
+    {
       "when": "ongoing",
       "what": "Open source",
       "where": "GitHub",
-      "b": "Go tools, network scanners, PWAs. Lately, AI memory and LLM tooling."
+      "b": "Go tools, network scanners, config testers, PWAs."
     },
     {
       "when": "dec 2025",
@@ -291,8 +286,8 @@
       "iconPath": "M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"
     },
     {
-      "route": "/writing",
-      "label": "writing",
+      "route": "/blog",
+      "label": "blog",
       "iconPath": "M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h5"
     },
     {
@@ -316,11 +311,11 @@
     "eyebrow": "hey, you found me",
     "title": [
       "boo. i’m dani.",
-      "i give ai agents a memory."
+      "a networking guy who codes."
     ],
     "body": [
-      "Every AI agent you’ve used forgets you the second the tab closes. Every. Single. One.",
-      "That bugs me way more than it should. So I’m building them a memory that lives on your laptop, not in a data center. Open source, local-first, and still a little broken. Getting there."
+      "I build tools for networks that don’t want to be mapped: scanners, config testers, and a dashboard that counts internet shutdowns in Iran.",
+      "I grew up waiting until 3 a.m. to push to GitHub, so a free, open internet is personal. Open source, mostly Go. The goal is making people’s lives a little easier."
     ],
     "ctas": [
       "see what broke → /projects",
@@ -349,15 +344,6 @@
       "noUrlLabel": "repo coming soon",
       "urlLabel": "View on GitHub ↗"
     },
-    "writing": {
-      "eyebrow": "writing",
-      "title": [
-        "notes from",
-        "the rabbit hole."
-      ],
-      "intro": "What I built, what broke, and the numbers. No tutorials.",
-      "postFooter": "roast it or ask me anything"
-    },
     "experience": {
       "eyebrow": "experience",
       "title": [
@@ -370,9 +356,18 @@
       "title": [
         "slide in."
       ],
-      "body": "Memory systems, local-first stuff, weird network bugs, a deep-dive talk for your meetup or Discord. Yes to all of it. I reply fast, and faster if the bug is weird."
+      "body": "Networking tools, weird network bugs, open source, a deep-dive talk for your meetup or Discord. Yes to all of it. I reply fast, and faster if the bug is weird."
     },
-    "footer": "© 2026 dani samadi · 0xdanis.com · the background is live webgl. poke it."
+    "footer": "© 2026 dani samadi · 0xdanis.com · the background is live webgl. poke it.",
+    "blog": {
+      "eyebrow": "blog",
+      "title": [
+        "notes from",
+        "the rabbit hole."
+      ],
+      "intro": "What I built, what broke, and the numbers. No tutorials.",
+      "postFooter": "roast it or ask me anything"
+    }
   },
   "postSlugs": [
     "your-agent-is-ignoring-your-rules-file",

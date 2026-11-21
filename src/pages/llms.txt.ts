@@ -16,14 +16,14 @@ ${site.home.body.join(" ")}
 - [Home](${base}/)
 - [About](${base}/about): ${site.pageCopy.about.intro}
 - [Projects](${base}/projects): ${site.pageCopy.projects.intro}
-- [Writing](${base}/writing): ${site.pageCopy.writing.intro}
+- [Blog](${base}/blog): ${site.pageCopy.blog.intro}
 - [Experience](${base}/experience)
 - [Contact](${base}/contact)
 ${site.links.resume ? `- [Resume](${base}${site.links.resume})\n` : ""}
 ## Projects
 
 ${site.projects.map((p) => `- ${p.url ? `[${p.name}](${p.url})` : p.name}: ${p.story} (${p.tag})`).join("\n")}
-${posts.length ? `\n## Writing\n\n${posts.map((p) => `- [${p.data.title}](${base}/writing/${p.id})`).join("\n")}\n` : ""}
+${posts.length ? `\n## Blog\n\n${posts.map((p) => `- [${p.data.title}](${base}/blog/${p.id})`).join("\n")}\n` : ""}
 ## Skills
 
 ${site.stack.join(", ")}

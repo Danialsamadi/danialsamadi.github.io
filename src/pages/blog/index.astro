@@ -4,16 +4,16 @@ import PageHead from "@/components/PageHead.astro";
 import Chev from "@/components/Chev.astro";
 import site from "@/site.json";
 import { getPosts, meta } from "@/lib";
-const c = site.pageCopy.writing;
+const c = site.pageCopy.blog;
 const posts = await getPosts();
 ---
 
-<Base title="writing" description="What Dani built, what broke, and the numbers. No tutorials.">
+<Base title="blog" description="What Dani built, what broke, and the numbers. No tutorials.">
   <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
   {posts.length > 0 ? (
     <div class="group">
       {posts.map((p) => (
-        <a href={`/writing/${p.id}`} class="row post">
+        <a href={`/blog/${p.id}`} class="row post">
           <span class="grow"><b>{p.data.title}</b><small>{meta(p)}</small></span><Chev />
         </a>
       ))}

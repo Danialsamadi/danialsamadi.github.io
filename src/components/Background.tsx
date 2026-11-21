@@ -12,8 +12,9 @@ export default function Background({ dark, light }: Props) {
     const canvas = ref.current!;
     const renderer = createRenderer(canvas);
     if (!renderer) return; // no WebGL2: solid --bg shows through
-    const mq = matchMedia("(prefers-color-scheme: dark)");
-    let config = mq.matches ? dark : light;
+    const root = document.documentElement;
+    const pick = () => (root.dataset.theme === "dark" ? dark : light);
+    let config = pick();
     let time = 0;
     let pointer: PointerState = IDLE_POINTER;
     let target = { x: 0.5, y: 0.5, inside: false };
@@ -28,7 +29,7 @@ export default function Background({ dark, light }: Props) {
       target = { x: e.clientX / innerWidth, y: e.clientY / innerHeight, inside: true };
     };
     const onLeave = () => (target = { ...target, inside: false });
-    const onScheme = () => (config = mq.matches ? dark : light);
+    const themeObs = new MutationObserver(() => (config = pick()));
     const tick = (now: number) => {
       raf = requestAnimationFrame(tick);
       const dt = Math.min((now - last) / 1000, 0.1);
@@ -49,7 +50,7 @@ export default function Background({ dark, light }: Props) {
     addEventListener("pointermove", onPointer);
     addEventListener("pointerdown", onPointer);
     document.documentElement.addEventListener("pointerleave", onLeave);
-    mq.addEventListener("change", onScheme);
+    themeObs.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
     raf = requestAnimationFrame(tick);
     return () => {
       cancelAnimationFrame(raf);
@@ -57,7 +58,7 @@ export default function Background({ dark, light }: Props) {
       removeEventListener("pointermove", onPointer);
       removeEventListener("pointerdown", onPointer);
       document.documentElement.removeEventListener("pointerleave", onLeave);
-      mq.removeEventListener("change", onScheme);
+      themeObs.disconnect();
       renderer.dispose();
     };
   }, []);

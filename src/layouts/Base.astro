@@ -15,15 +15,31 @@ const cur = (route: string) => (path === route || path.startsWith(route + "/") ?
 const full = title === "dani samadi" ? title : `${title} · dani samadi`;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="color-scheme" content="light dark" />
+    
     <title>{full}</title>
     <meta name="description" content={description} />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>" />
     <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <script is:inline>
+      // Default dark; user choice in localStorage. Re-applied after each client-side navigation.
+      (() => {
+        const get = () => localStorage.getItem("theme") || "dark";
+        const apply = (doc = document) => (doc.documentElement.dataset.theme = get());
+        apply();
+        if (window.__theme) return;
+        window.__theme = true;
+        document.addEventListener("astro:before-swap", (e) => apply(e.newDocument));
+        document.addEventListener("click", (e) => {
+          if (!e.target.closest("[data-theme-toggle]")) return;
+          localStorage.setItem("theme", get() === "dark" ? "light" : "dark");
+          apply();
+        });
+      })();
+    </script>
     <ClientRouter />
   </head>
   <body>
@@ -39,6 +55,10 @@ const full = title === "dani samadi" ? title : `${title} · dani samadi`;
           ))}
         </nav>
         <div class="ext-links">
+          <button type="button" class="press theme-btn" data-theme-toggle aria-label="Toggle light and dark mode">
+            <svg class="i-sun" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+            <svg class="i-moon" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg>
+          </button>
           <a href={site.links.github} class="press">GitHub <Ext /></a>
           <a href={site.links.linkedin} class="press">LinkedIn <Ext /></a>
         </div>

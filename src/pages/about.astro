@@ -5,16 +5,16 @@ import site from "@/site.json";
 const c = site.pageCopy.about;
 ---
 
-<Base title="about" description="The lore, speedrun edition: Go tools, hostile networks, a diploma, and the AI memory rabbit hole.">
+<Base title="about" description="The lore, speedrun edition: from C++ as a kid in Iran to networking tools in Canada.">
   <PageHead eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
-  <div class="group">
+  <ol class="timeline">
     {site.chapters.map((ch) => (
-      <div class="chapter">
-        <span class="badge" aria-hidden="true">{ch.n}</span>
-        <div><h2 class="title3">{ch.t}</h2><p>{ch.b}</p></div>
-      </div>
+      <li>
+        <span class="tl-when">{ch.when}</span>
+        <div class="card"><h2 class="title3">{ch.t}</h2><p>{ch.b}</p></div>
+      </li>
     ))}
-  </div>
+  </ol>
   <section class="block">
     <h2 class="title">stuff i love</h2>
     <div class="grid loves">

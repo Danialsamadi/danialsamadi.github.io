@@ -9,14 +9,14 @@ const { home, now, links } = site;
 const latest = (await getPosts()).slice(0, 2);
 ---
 
-<Base title="dani samadi" description="Dani Samadi builds local-first memory for AI agents. Open source, benchmarked, still a little broken.">
+<Base title="dani samadi" description="Dani Samadi, a networking guy who codes. Open source Go tools for scanning, testing and keeping the internet open.">
   <section class="hero">
     <p class="eyebrow">{home.eyebrow}</p>
     <h1 class="large">{home.title[0]}<br />{home.title[1]}</h1>
     {home.body.map((p, i) => <p style={`max-width:34em;${i === 1 ? "margin-bottom:32px" : ""}`}>{p}</p>)}
     <div class="btns">
       <a href="/projects" class="press btn primary">see what broke</a>
-      <a href="/writing" class="press btn">read my writing</a>
+      <a href="/blog" class="press btn">read my blog</a>
       <a href={links.github} class="press btn">GitHub <Ext /></a>
       <a href={links.linkedin} class="press btn">LinkedIn <Ext /></a>
     </div>
@@ -30,12 +30,12 @@ const latest = (await getPosts()).slice(0, 2);
   {latest.length > 0 && (
     <section class="block">
       <div class="section-head">
-        <h2 class="title">latest writing</h2>
-        <a href="/writing" class="link-btn">see all</a>
+        <h2 class="title">latest posts</h2>
+        <a href="/blog" class="link-btn">see all</a>
       </div>
       <div class="group">
         {latest.map((p) => (
-          <a href={`/writing/${p.id}`} class="row">
+          <a href={`/blog/${p.id}`} class="row">
             <span class="grow"><b>{p.data.title}</b><small>{meta(p)}</small></span><Chev />
           </a>
         ))}
