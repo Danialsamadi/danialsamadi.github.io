@@ -12,7 +12,7 @@ const { title, description, narrow = false } = Astro.props as {
 };
 const path = Astro.url.pathname.replace(/\/$/, "");
 const cur = (route: string) => (path === route || path.startsWith(route + "/") ? "page" : undefined);
-const full = title === "dani samadi" ? title : `${title} · dani samadi`;
+const full = title === "Dani" ? title : `${title} · Dani`;
 ---
 
 <html lang="en" data-theme="dark">
